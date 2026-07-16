@@ -1,0 +1,57 @@
+git init   Initialise un nouveau dépôt Git dans le dossier courant
+git add .   Ajoute tous les fichiers du dossier courant (et sous-dossiers) à la zone de préparation
+git commit -m "Premier commit"   Crée un instantané (snapshot) permanent des fichiers ajoutés avec git add
+git remote add origin https://github.com/tonNomUtilisateur/nomDuProjet.git
+git branch -M main
+git push -u origin main
+
+
+
+git remote add origin https://github.com/tonNomUtilisateur/nomDuProjet.git
+git remote add origin https://github.com/nguimfack20/nextdashboard
+
+git remote = commande pour gérer les dépôts distants (remote repositories)
+add = ajouter une nouvelle connexion vers un dépôt distant
+origin = le nom qu'on donne à cette connexion (c'est une convention, "origin" est le nom standard utilisé par défaut, mais tu pourrais l'appeler autrement)
+L'URL = l'adresse de ton dépôt GitHub où les fichiers seront envoyés
+
+En clair : cette commande dit à Git "quand je parlerai de 'origin', je veux dire ce dépôt GitHub précis"
+Tu peux vérifier que ça a fonctionné avec :
+git remote -v
+
+
+git branch -M main
+
+git branch = commande pour gérer les branches
+-M = renomme la branche actuelle (force le renommage même si une branche du même nom existe déjà)
+main = le nouveau nom de la branche
+(apres cette commande, je quitte de master a main)
+Pourquoi cette commande ?
+
+Par défaut, Git nommait autrefois la branche principale master
+GitHub (et la communauté Git en général) utilise maintenant main comme nom standard
+Cette commande s'assure que ta branche locale s'appelle main pour correspondre à ce que GitHub attend
+
+
+git push -u origin main
+
+git push = envoie tes commits locaux vers le dépôt distant
+-u (ou --set-upstream) = établit un lien permanent entre ta branche locale main et la branche main du dépôt distant origin
+origin = le nom du dépôt distant (celui configuré à l'étape 1)
+main = la branche à envoyer
+
+L'avantage du -u : une fois fait, les prochaines fois tu pourras juste taper :
+bashgit push
+sans avoir à répéter origin main — Git se souvient du lien.
+
+Résumé visuel
+git remote add origin [URL]  →  Connecte ton projet local à GitHub
+        ↓
+git branch -M main           →  Renomme ta branche principale en "main"
+        ↓
+git push -u origin main      →  Envoie tes fichiers + crée le lien permanent
+Analogie simple :
+
+git remote add origin = tu enregistres l'adresse postale de ton ami (GitHub) dans ton carnet de contacts
+git branch -M main = tu t'assures que le colis est bien étiqueté avec le bon nom
+git push -u origin main = tu envoies le colis pour la première fois ET tu mémorises l'adresse pour les prochains envois
